@@ -1,0 +1,12 @@
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    now = datetime.now()
+    calendar_data = get_calendar(now.year, now.month)
+    return render_template("index.html", year=now.year, month=now.month, calendar=calendar_data)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+

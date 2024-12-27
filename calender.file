@@ -1,0 +1,19 @@
+def get_calendar(year, month):
+    first_day = datetime(year, month, 1)
+    if month == 12:
+        last_day = datetime(year, month, 31)
+    else:
+        last_day = datetime(year, month + 1, 1) - timedelta(days=1)
+    calendar = []
+    while first_day <= last_day:
+        week = []
+        for i in range(7):
+            day = first_day + timedelta(days=i)
+            week.append(day.day)
+        calendar.append(week)
+        first_day += timedelta(days=7)
+    return calendar
+
+
+
+
